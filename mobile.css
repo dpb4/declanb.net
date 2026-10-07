@@ -1,0 +1,49 @@
+header {
+  height: auto;
+}
+
+header .inner {
+  width: var(--main);
+
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+main {
+  grid-column: 1 / -1;
+  order: -1;
+  border-style: none;
+  border-bottom-style: solid;
+  border-color: var(--linecol);
+  border-width: var(--borderw);
+  display: flex;
+  justify-content: center;
+
+}
+
+.maincontent {
+  max-width: var(--main);
+}
+
+.left>div,
+.right>div {
+  width: 100%;
+}
+
+.left {
+  border-style: none;
+  border-right-style: solid;
+  border-color: var(--linecol);
+  border-width: var(--borderw2);
+}
+
+.right {
+  border-style: none;
+  border-left-style: solid;
+  border-color: var(--linecol);
+  border-width: var(--borderw2);
+}
