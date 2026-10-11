@@ -1,12 +1,17 @@
 :root {
+  color-scheme: light dark;
+
   /* layout */
   --side: 35ch;
   --main: 65ch;
   --pad: 2ch;
 
   /* colors */
-  --bgcol: #ffffff;
-  --linecol: #eeeeee;
+  --bgcol: light-dark(#ffffff, #121212);
+  --linecol: light-dark(#eeeeee, #242424);
+  --textcol: light-dark(#000000, #efefef);
+  /* --accentcol: light-dark(#b642f5, #b642f5); */
+  --accentcol: light-dark(#26db16, #36eb26);
 
   /* misc */
   --borderw: 2px;
@@ -47,6 +52,7 @@ body {
   font-family: monospace;
 
   background-color: var(--bgcol);
+  color: var(--textcol);
 }
 
 header {
@@ -81,6 +87,10 @@ main {
   border-width: var(--borderw);
 }
 
+#firsttitle {
+  margin-top: 0;
+}
+
 .columns>aside {
   flex: 1;
   display: flex;
@@ -111,4 +121,22 @@ main {
 
 .picture>figcaption {
   text-align: center;
+}
+
+/* #first { */
+/* margin-top: 0; */
+/* } */
+
+.nav a {
+  display: inline-block;
+  padding: 2ch 0;
+  width: calc(0.5 * var(--side));
+  color: var(--textcol);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--accentcol);
+  /* background-color: var(--linecol); */
+  text-decoration: underline;
 }
