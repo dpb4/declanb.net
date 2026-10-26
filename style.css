@@ -106,6 +106,7 @@ main {
 
 .leftcontent,
 .rightcontent {
+  width: 100%;
   max-width: var(--side);
   padding: var(--pad);
 }
@@ -127,6 +128,11 @@ main {
 /* margin-top: 0; */
 /* } */
 
+/* hug main when the nav is in the left column */
+.left .nav {
+  text-align: right;
+}
+
 .nav a {
   display: inline-block;
   padding: 2ch 0;
@@ -139,4 +145,8 @@ main {
   color: var(--accentcol);
   /* background-color: var(--linecol); */
   text-decoration: underline;
+}
+
+.miniheader {
+  opacity: 0.6;
 }

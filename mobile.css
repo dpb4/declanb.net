@@ -47,3 +47,19 @@ main {
   border-color: var(--linecol);
   border-width: var(--borderw2);
 }
+
+/* lay the nav out in rows to save vertical space */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2ch;
+}
+
+.nav br {
+  display: none;
+}
+
+.nav a {
+  width: auto;
+  padding: 1ch 0;
+}

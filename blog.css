@@ -1,32 +1,44 @@
 /* blog-specific styles, loaded after style.css */
 
-/* no left column: main takes its place, so the right column doesn't move */
+/* no right column: main takes its place, so the left column doesn't move */
 main {
   flex: 1 1 var(--main);
   display: flex;
-  justify-content: flex-end;
-  border-left-style: none;
+  justify-content: flex-start;
+  border-right-style: none;
 }
 
-/* text starts where the left column's content used to */
+/* text ends where the right column's content used to */
 .maincontent {
   width: 100%;
   max-width: calc(var(--main) + var(--side) - 2 * var(--pad) - var(--borderw));
 }
 
-.right {
+.left {
   flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* hug main's border, as on the home page */
+.leftcontent {
+  margin-left: auto;
+  text-align: right;
 }
 
 @media (max-width: 110ch) {
-  .columns>.right {
+  .columns>.left {
     grid-column: 1 / -1;
-    border-left-style: none;
+    border-right-style: none;
+  }
+
+  .leftcontent {
+    margin-left: 0;
+    text-align: left;
   }
 }
 
 /* full width of the aside, so borders reach main's border and the page edge */
-.rightsection+.rightsection {
+.leftsection+.leftsection {
   border-top-style: solid;
   border-color: var(--linecol);
   border-width: var(--borderw);
