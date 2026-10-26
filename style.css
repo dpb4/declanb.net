@@ -104,8 +104,8 @@ main {
   justify-content: flex-start;
 }
 
-.left>div,
-.right>div {
+.leftcontent,
+.rightcontent {
   max-width: var(--side);
   padding: var(--pad);
 }
