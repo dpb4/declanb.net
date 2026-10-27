@@ -16,6 +16,7 @@
   /* misc */
   --borderw: 2px;
   --borderw2: calc(var(--borderw) * 0.5);
+  --linkpadsize: 14ch;
 }
 
 /* * * { */
@@ -55,7 +56,16 @@ body {
   color: var(--textcol);
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 header {
+  position: relative;
   height: 20ch;
   display: flex;
   flex-direction: column;
@@ -124,21 +134,35 @@ main {
   text-align: center;
 }
 
-/* #first { */
-/* margin-top: 0; */
-/* } */
-
-/* hug main when the nav is in the left column */
 .left .nav {
   text-align: right;
 }
 
+/* fixed width with brackets at the edges, so they line up down the column */
 .nav a {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 1ch;
   padding: 2ch 0;
-  width: calc(0.5 * var(--side));
+  width: var(--linkpadsize);
   color: var(--textcol);
   text-decoration: none;
+}
+
+.nav a::before {
+  content: "[";
+}
+
+.nav a::after {
+  content: "]";
+}
+
+.nav a[aria-current="page"]::before {
+  content: "[[";
+}
+
+.nav a[aria-current="page"]::after {
+  content: "]]";
 }
 
 .nav a:hover {
@@ -149,4 +173,31 @@ main {
 
 .miniheader {
   opacity: 0.6;
+}
+
+.themetoggle {
+  position: absolute;
+  top: var(--pad);
+  right: var(--pad);
+  /* half-filled circle */
+  width: 1.5ch;
+  height: 1.5ch;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%) border-box;
+  color: var(--textcol);
+  opacity: 0.25;
+  cursor: pointer;
+}
+
+.themetoggle:hover,
+.themetoggle:focus-visible {
+  color: var(--accentcol);
+  opacity: 1;
+}
+
+#uc {
+  width: var(--side);
+  
 }

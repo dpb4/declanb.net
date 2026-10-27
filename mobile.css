@@ -7,15 +7,23 @@ header .inner {
 
 }
 
+/* put nav above main content */
 .columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-direction: column;
+}
+
+.columns>main,
+.columns>aside {
+  flex: none;
+  order: 1;
+}
+
+.columns>main {
+  order: 0;
 }
 
 main {
-  grid-column: 1 / -1;
-  order: -1;
   border-style: none;
   border-bottom-style: solid;
   border-color: var(--linecol);
@@ -34,24 +42,42 @@ main {
   width: 100%;
 }
 
-.left {
-  border-style: none;
-  border-right-style: solid;
-  border-color: var(--linecol);
-  border-width: var(--borderw2);
-}
-
+.left,
 .right {
+  justify-content: flex-start;
   border-style: none;
-  border-left-style: solid;
-  border-color: var(--linecol);
-  border-width: var(--borderw2);
 }
 
-/* lay the nav out in rows to save vertical space */
+.columns>aside:has(.nav) {
+  order: -1;
+  border-bottom-style: solid;
+  border-color: var(--linecol);
+  border-width: var(--borderw);
+}
+
+/* lay the nav out in centered rows to save vertical space */
+.leftcontent:has(>.nav),
+.rightcontent:has(>.nav) {
+  max-width: none;
+}
+
+.leftcontent:has(>.picture),
+.rightcontent:has(>.picture) {
+  max-width: none;
+}
+
+.picture {
+  text-align: center;
+}
+
+.picture>img {
+  width: calc(var(--side) - 2 * var(--pad));
+}
+
 .nav {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   column-gap: 2ch;
 }
 
@@ -60,6 +86,5 @@ main {
 }
 
 .nav a {
-  width: auto;
   padding: 1ch 0;
 }
