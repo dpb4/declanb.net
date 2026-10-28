@@ -145,6 +145,7 @@ main {
   gap: 1ch;
   padding: 2ch 0;
   width: var(--linkpadsize);
+  white-space: nowrap;
   color: var(--textcol);
   text-decoration: none;
 }
@@ -155,6 +156,20 @@ main {
 
 .nav a::after {
   content: "]";
+}
+
+/* external link arrow: fixed 1ch so fallback fonts can't widen it.
+   it's its own flex item, so auto margins keep it next to the label
+   (the gap supplies the space) with the pair centered between brackets */
+.nav a .ext {
+  display: inline-block;
+  width: 1ch;
+  text-align: center;
+  margin-right: auto;
+}
+
+.nav a:has(.ext)::before {
+  margin-right: auto;
 }
 
 .nav a[aria-current="page"]::before {
